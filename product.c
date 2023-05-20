@@ -31,7 +31,7 @@ int addContent(content *cp){
     time_t now; 
     time(&now);
     struct tm *tm_info = localtime(&now);
-    strftime(cp->writtenDate, sizeof(cp->writtenDate), "%Y-%m-%d %H:%M:%S", tm_info); // 게시글이 작성된 시각 가져오기
+    strftime(cp->writtenDate, sizeof(cp->writtenDate), "%Y-%m-%d", tm_info); // 게시글이 작성된 날짜 가져오기
 
     return 1;
 }
@@ -74,7 +74,7 @@ void modifyContent(content *cp[], int count){
     time_t now; 
     time(&now);
     struct tm *tm_info = localtime(&now);
-    strftime(cp[num-1]->writtenDate, sizeof(cp[num-1]->writtenDate), "%Y-%m-%d %H:%M:%S", tm_info); // 게시글이 작성된 시각 가져오기
+    strftime(cp[num-1]->writtenDate, sizeof(cp[num-1]->writtenDate), "%Y-%m-%d//%H:%M:%S", tm_info); // 게시글이 작성된 시각 가져오기
 }
 
 int cancelContent(content *cp[], int count){
@@ -103,9 +103,9 @@ int loadData(content *cp[]) {
     fp = fopen("boardContent.txt", "rt");
 
     for (; i < 100; i++) {
-        cp[i] = malloc(sizeof(content)); // cp[i]에 메모리 할당
+        cp[i] = (content *)malloc(sizeof(content));
     if (fp == NULL) {
-        printf("불러올 데이터가 존재하지 않습니다.\n");
+        printf("불러올 파일이 존재하지 않습니다.\n");
         return 0;
     }
         if(fscanf(fp, "%s", cp[i]->title) == EOF) break; // 파일의 끝일 경우 break

@@ -6,10 +6,10 @@
 //CRUD 구현
 
 typedef struct boardContent{
-    char title[100];             // 게시글 제목
+    char title[500];             // 게시글 제목
     char contents[500];          // 게시글 내용
-    char writerName[50];        // 글쓴이 이름
-    char writtenDate[20];       // 작성된 시간
+    char writerName[500];        // 글쓴이 이름
+    char writtenDate[500];       // 작성된 시간
 } content;
 
 int selectMenu(); // 메뉴 선택 함수
