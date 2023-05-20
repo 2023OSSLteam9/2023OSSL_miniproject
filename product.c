@@ -31,7 +31,7 @@ int addContent(content *cp){
     time_t now; 
     time(&now);
     struct tm *tm_info = localtime(&now);
-    strftime(cp->writtenDate, sizeof(cp->writtenDate), "%Y-%m-%d", tm_info); // 게시글이 작성된 날짜 가져오기
+    strftime(cp->writtenDate, sizeof(cp->writtenDate), "%Y-%m-%d %H:%M:%S", tm_info); // 게시글이 작성된 시각 가져오기
 
     return 1;
 }
@@ -74,7 +74,7 @@ void modifyContent(content *cp[], int count){
     time_t now; 
     time(&now);
     struct tm *tm_info = localtime(&now);
-    strftime(cp[num-1]->writtenDate, sizeof(cp[num-1]->writtenDate), "%Y-%m-%d//%H:%M:%S", tm_info); // 게시글이 작성된 시각 가져오기
+    strftime(cp[num-1]->writtenDate, sizeof(cp[num-1]->writtenDate), "%Y-%m-%d %H:%M:%S", tm_info); // 게시글이 작성된 시각 가져오기
 }
 
 int cancelContent(content *cp[], int count){
@@ -91,7 +91,7 @@ void saveData(content *cp[], int count){
 
     for(int i = 0; i < count; i++){
         if(cp[i]->title == NULL) continue;
-        fprintf(fp, "%s %s %s %s\n" , cp[i]->title, cp[i]->contents, cp[i]->writerName, cp[i]->writtenDate);
+        fprintf(fp, "%s\n%s\n%s\n%s\n" , cp[i]->title, cp[i]->contents, cp[i]->writerName, cp[i]->writtenDate);
     }
     fclose(fp);
     printf("=> 성공적으로 저장하였습니다.\n");
@@ -101,19 +101,22 @@ int loadData(content *cp[]) {
     int count = 0, i = 0;
     FILE *fp;
     fp = fopen("boardContent.txt", "rt");
+    
+if (fp == NULL) {
+    printf("불러올 파일이 존재하지 않습니다.\n");
+    return 0;
+}
 
-    for (; i < 100; i++) {
-        cp[i] = (content *)malloc(sizeof(content));
-    if (fp == NULL) {
-        printf("불러올 파일이 존재하지 않습니다.\n");
-        return 0;
-    }
-        if(fscanf(fp, "%s", cp[i]->title) == EOF) break; // 파일의 끝일 경우 break
-        fscanf(fp, "%s", cp[i]->contents);
-        fscanf(fp, "%s", cp[i]->writerName);
-        fscanf(fp, "%s", cp[i]->writtenDate);
-    }
-    fclose(fp);
-    printf("=> 성공적으로 불러왔습니다.\n");
-    return i;
+while (count < 100) {
+    cp[count] = (content *)malloc(sizeof(content));
+    if (fscanf(fp, "%[^\n]%*c", cp[count]->title) == EOF)
+        break; // 파일의 끝일 경우 break
+    fscanf(fp, "%[^\n]%*c", cp[count]->contents);
+    fscanf(fp, "%[^\n]%*c", cp[count]->writerName);
+    fscanf(fp, "%[^\n]%*c", cp[count]->writtenDate);
+    count++;
+}
+fclose(fp);
+printf("=> 성공적으로 불러왔습니다.\n");
+return count;
 }
