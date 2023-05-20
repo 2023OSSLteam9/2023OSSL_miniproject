@@ -11,16 +11,16 @@ int main(){
     while(1){
     menu = selectMenu();
     if(menu == 0){
-        printf("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù."); 
+        printf("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤."); 
         break;
     }
     else if(menu == 2){
         cp[index] = (content *)malloc(sizeof(content));
         count += addContent(cp[index++]);
         }
-    else if(menu == 1|| menu == 3 || menu == 4){        //  2·Î Ãß°¡µÈ µ¥ÀÌÅÍ°¡ ¾øÀ» °æ¿ì 1,3,4¸¦ ÇÏ¸é µÇµ¹¾Æ°¡±â
+    else if(menu == 1|| menu == 3 || menu == 4){        //  2ë¡œ ì¶”ê°€ëœ ë°ì´í„°ê°€ ì—†ì„ ê²½ìš° 1,3,4ë¥¼ í•˜ë©´ ë˜ëŒì•„ê°€ê¸°
         if(count <= 0){
-            printf("µ¥ÀÌÅÍ°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.\n"); continue;
+            printf("ë°ì´í„°ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n"); continue;
         }
     }
     if(menu == 1) showContent(cp, index);
@@ -28,13 +28,13 @@ int main(){
     else if(menu == 4){
     int num = cancelContent(cp, index);
                 if (num == 0) {
-                printf("=> Ãë¼Ò µÊ\n");
+                printf("=> ì·¨ì†Œ ë¨\n");
                 continue;
             }
         free(cp[num-1]);
         cp[num-1] = NULL;
         count--;
-        printf("\n¼º°øÀûÀ¸·Î Á¦°ÅÇÏ¿´½À´Ï´Ù.\n");
+        printf("\nì„±ê³µì ìœ¼ë¡œ ì œê±°í•˜ì˜€ìŠµë‹ˆë‹¤.\n");
         }
     else if(menu == 5){
         saveData(cp, index);

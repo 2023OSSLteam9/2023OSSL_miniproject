@@ -1,43 +1,43 @@
 #include "product.h"
 
-// product.c ÇÔ¼ö ±â·Ï
+// product.c í•¨ìˆ˜ ê¸°ë¡
 
 int selectMenu(){
     int menu;
 
-    printf("*********** ÇÔ²² ÄÚµùÇØ¿ä ***********\n");
-    printf("1. °Ô½Ã±Û Á¶È¸\n");
-    printf("2. Ãß°¡\n");
-    printf("3. ¼öÁ¤\n");
-    printf("4. »èÁ¦\n");
-    printf("5. ÀúÀå\n");
-    printf("0. Á¾·á\n");
+    printf("*********** í•¨ê»˜ ì½”ë”©í•´ìš” ***********\n");
+    printf("1. ê²Œì‹œê¸€ ì¡°íšŒ\n");
+    printf("2. ì¶”ê°€\n");
+    printf("3. ìˆ˜ì •\n");
+    printf("4. ì‚­ì œ\n");
+    printf("5. ì €ì¥\n");
+    printf("0. ì¢…ë£Œ\n");
     printf("************************************\n");
     scanf("%d", &menu);
     return menu;
 }
 
 int addContent(content *cp){
-    printf("Ç¥±âµÉ ÀÛ¼ºÀÚÀÇ ÀÌ¸§À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.\n");
+    printf("í‘œê¸°ë  ì‘ì„±ìì˜ ì´ë¦„ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.\n");
     getchar();
     scanf("%[^\n]s", cp->writerName);
-    printf("Á¦¸ñÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.\n");
+    printf("ì œëª©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.\n");
     getchar();
     scanf("%[^\n]s", cp->title);
-    printf("³»¿ëÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.\n");
+    printf("ë‚´ìš©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.\n");
     getchar();
     scanf("%[^\n]s", cp->contents);
 
     time_t now; 
     time(&now);
     struct tm *tm_info = localtime(&now);
-    strftime(cp->writtenDate, sizeof(cp->writtenDate), "%Y-%m-%d %H:%M:%S", tm_info); // °Ô½Ã±ÛÀÌ ÀÛ¼ºµÈ ½Ã°¢ °¡Á®¿À±â
+    strftime(cp->writtenDate, sizeof(cp->writtenDate), "%Y-%m-%d %H:%M:%S", tm_info); // ê²Œì‹œê¸€ì´ ì‘ì„±ëœ ì‹œê° ê°€ì ¸ì˜¤ê¸°
 
     return 1;
 }
 
 void listContent(content *cp[], int count){
-    printf("¹øÈ£   Á¦¸ñ                 ÀÛ¼º½Ã°¢             ÀÛ¼ºÀÚ \t(»èÁ¦ ½Ã 0¹øÀ» ´­·¯ Ãë¼Ò)\n");
+    printf("ë²ˆí˜¸   ì œëª©                 ì‘ì„±ì‹œê°             ì‘ì„±ì \t(ì‚­ì œ ì‹œ 0ë²ˆì„ ëˆŒëŸ¬ ì·¨ì†Œ)\n");
     for (int i = 0; i < count; i++) {
         if (cp[i] == NULL) continue;
         printf("%-5d  %-20s %-20s %s\n", i + 1, cp[i]->title, cp[i]->writtenDate, cp[i]->writerName);
@@ -48,39 +48,39 @@ void showContent(content *cp[], int count){
     int num;
     listContent(cp, count);
     scanf("%d", &num);
-    printf("\nÁ¦¸ñ : %s\t ÀÛ¼ºÀÚ %s\n\n", cp[num-1]->title, cp[num-1]->writerName);
+    printf("\nì œëª© : %s\t ì‘ì„±ì %s\n\n", cp[num-1]->title, cp[num-1]->writerName);
     printf("%s\n", cp[num-1]->contents);
-    printf("\nEnter¸¦ ´­·¯¼­ ÁøÇàÇØÁÖ¼¼¿ä...");
-    while(getchar() != '\n');        // ¿£ÅÍ¸¦ ´©¸£±â Àü±îÁö ¸Ş´º·Î µ¹¾Æ°¡Áö ¾ÊÀ½
-    getchar();                       // ÀÔ·Â ¹öÆÛ Á¦°Å
+    printf("\nEnterë¥¼ ëˆŒëŸ¬ì„œ ì§„í–‰í•´ì£¼ì„¸ìš”...");
+    while(getchar() != '\n');        // ì—”í„°ë¥¼ ëˆ„ë¥´ê¸° ì „ê¹Œì§€ ë©”ë‰´ë¡œ ëŒì•„ê°€ì§€ ì•ŠìŒ
+    getchar();                       // ì…ë ¥ ë²„í¼ ì œê±°
 }
 
 void modifyContent(content *cp[], int count){
     int num;
     listContent(cp, count);
-    printf("¸î ¹øÀ» ¼öÁ¤ ÇÏ½Ã°Ú½À´Ï±î?");
+    printf("ëª‡ ë²ˆì„ ìˆ˜ì • í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
     scanf("%d", &num);
 
-    printf("Ç¥±âµÉ ÀÛ¼ºÀÚÀÇ ÀÌ¸§À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.\n");
+    printf("í‘œê¸°ë  ì‘ì„±ìì˜ ì´ë¦„ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.\n");
     getchar();
     scanf("%[^\n]s", cp[num-1]->writerName);
-    printf("Á¦¸ñÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.\n");
+    printf("ì œëª©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.\n");
     getchar();
     scanf("%[^\n]s", cp[num-1]->title);
-    printf("³»¿ëÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.\n");
+    printf("ë‚´ìš©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.\n");
     getchar();
     scanf("%[^\n]s", cp[num-1]->contents);
 
     time_t now; 
     time(&now);
     struct tm *tm_info = localtime(&now);
-    strftime(cp[num-1]->writtenDate, sizeof(cp[num-1]->writtenDate), "%Y-%m-%d %H:%M:%S", tm_info); // °Ô½Ã±ÛÀÌ ÀÛ¼ºµÈ ½Ã°¢ °¡Á®¿À±â
+    strftime(cp[num-1]->writtenDate, sizeof(cp[num-1]->writtenDate), "%Y-%m-%d %H:%M:%S", tm_info); // ê²Œì‹œê¸€ì´ ì‘ì„±ëœ ì‹œê° ê°€ì ¸ì˜¤ê¸°
 }
 
 int cancelContent(content *cp[], int count){
     int no;
     listContent(cp, count);
-    printf("¸î ¹øÀ» »èÁ¦ ÇÏ½Ã°Ú½À´Ï±î?");
+    printf("ëª‡ ë²ˆì„ ì‚­ì œ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
     scanf("%d", &no);
     return no;
 }
@@ -94,7 +94,7 @@ void saveData(content *cp[], int count){
         fprintf(fp, "%s\n%s\n%s\n%s\n" , cp[i]->title, cp[i]->contents, cp[i]->writerName, cp[i]->writtenDate);
     }
     fclose(fp);
-    printf("=> ¼º°øÀûÀ¸·Î ÀúÀåÇÏ¿´½À´Ï´Ù.\n");
+    printf("=> ì„±ê³µì ìœ¼ë¡œ ì €ì¥í•˜ì˜€ìŠµë‹ˆë‹¤.\n");
 }
 
 int loadData(content *cp[]) {
@@ -103,20 +103,20 @@ int loadData(content *cp[]) {
     fp = fopen("boardContent.txt", "rt");
     
 if (fp == NULL) {
-    printf("ºÒ·¯¿Ã ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.\n");
+    printf("ë¶ˆëŸ¬ì˜¬ íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n");
     return 0;
 }
 
 while (count < 100) {
     cp[count] = (content *)malloc(sizeof(content));
     if (fscanf(fp, "%[^\n]%*c", cp[count]->title) == EOF)
-        break; // ÆÄÀÏÀÇ ³¡ÀÏ °æ¿ì break
+        break; // íŒŒì¼ì˜ ëì¼ ê²½ìš° break
     fscanf(fp, "%[^\n]%*c", cp[count]->contents);
     fscanf(fp, "%[^\n]%*c", cp[count]->writerName);
     fscanf(fp, "%[^\n]%*c", cp[count]->writtenDate);
     count++;
 }
 fclose(fp);
-printf("=> ¼º°øÀûÀ¸·Î ºÒ·¯¿Ô½À´Ï´Ù.\n");
+printf("=> ì„±ê³µì ìœ¼ë¡œ ë¶ˆëŸ¬ì™”ìŠµë‹ˆë‹¤.\n");
 return count;
 }
