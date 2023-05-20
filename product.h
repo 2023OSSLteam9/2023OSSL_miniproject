@@ -3,20 +3,20 @@
 #include <string.h>
 #include <time.h>
 
-//CRUD ±¸Çö
+//CRUD êµ¬í˜„
 
 typedef struct boardContent{
-    char title[100];             // °Ô½Ã±Û Á¦¸ñ
-    char contents[500];          // °Ô½Ã±Û ³»¿ë
-    char writerName[50];        // ±Û¾´ÀÌ ÀÌ¸§
-    char writtenDate[20];       // ÀÛ¼ºµÈ ½Ã°£
+    char title[100];             // ê²Œì‹œê¸€ ì œëª©
+    char contents[500];          // ê²Œì‹œê¸€ ë‚´ìš©
+    char writerName[50];        // ê¸€ì“´ì´ ì´ë¦„
+    char writtenDate[20];       // ì‘ì„±ëœ ì‹œê°„
 } content;
 
-int selectMenu(); // ¸Ş´º ¼±ÅÃ ÇÔ¼ö
-int addContent(); // °Ô½Ã±Û Ãß°¡ ÇÔ¼ö
-void showContent(); // Ãß°¡µÈ °Ô½Ã±Û È£Ãâ ÇÔ¼ö
-void listContent(); // Ãß°¡µÈ °Ô½Ã±ÛÀÇ ³»¿ë È£Ãâ ÇÔ¼ö
-void modifyContent(); // °Ô½Ã±Û ¼öÁ¤ ÇÔ¼ö
-int cancelContent(); // °Ô½Ã±Û »èÁ¦ ÇÔ¼ö
-void saveData(); // ÀúÀå ÇÔ¼ö
-int loadData();
+int selectMenu(); // ë©”ë‰´ ì„ íƒ í•¨ìˆ˜
+int addContent(); // ê²Œì‹œê¸€ ì¶”ê°€ í•¨ìˆ˜
+void showContent(); // ì¶”ê°€ëœ ê²Œì‹œê¸€ í˜¸ì¶œ í•¨ìˆ˜
+void listContent(); // ì¶”ê°€ëœ ê²Œì‹œê¸€ì˜ ë‚´ìš© í˜¸ì¶œ í•¨ìˆ˜
+void modifyContent(); // ê²Œì‹œê¸€ ìˆ˜ì • í•¨ìˆ˜
+int cancelContent(); // ê²Œì‹œê¸€ ì‚­ì œ í•¨ìˆ˜
+void saveData(); // ì €ì¥ í•¨ìˆ˜
+int loadData(); // ë¶ˆëŸ¬ì˜¤ê¸° í•¨ìˆ˜
