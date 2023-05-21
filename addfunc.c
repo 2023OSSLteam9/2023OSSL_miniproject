@@ -25,8 +25,8 @@ struct Transaction transactions[MAX_TRANSACTIONS];
 int numTransactions = 0;
 int totalMiles = 0;
 
-//회원가입 함수 구현
-int registerUser(const char *username, const char *password) {
+//회원가입
+int registerUser(const char *username, const char *password) { 
     if (numUsers >= MAX_USERS) {
         printf("Error: Maximum number of users reached.\n");
         return 0;
@@ -53,7 +53,7 @@ int registerUser(const char *username, const char *password) {
     return 1;
 }
 
-// 로그인 함수 구현
+//로그인
 int loginUser(const char *username, const char *password) {
     for (int i = 0; i < numUsers; i++) {
         if (strcmp(users[i].username, username) == 0) {
@@ -71,7 +71,7 @@ int loginUser(const char *username, const char *password) {
     return 0;
 }
 
-// 마일리지 제공
+// 마일리지 지급
 void addTransaction(const char* description, int miles) {
     if (numTransactions >= MAX_TRANSACTIONS) {
         printf("Error: Maximum number of transactions reached.\n");
@@ -97,7 +97,7 @@ void printTransactionHistory() {
     printf("Total Miles: %d\n", totalMiles);
 }
 
-//코딩공부 정도에 따른 마일리지 지급 
+// 입력된 코딩 레벨에 따른 마일리지 지급
 void awardMiles(int codingLevel) {
     int miles = 0;
 
@@ -118,4 +118,3 @@ void awardMiles(int codingLevel) {
     sprintf(description, "Coding Level +%d", codingLevel);
     addTransaction(description, miles);
 }
-
