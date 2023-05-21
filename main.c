@@ -43,17 +43,72 @@ int main(){
     }
     
 }
-   registerUser("user1", "password1");
-    registerUser("user2", "password2");
-    loginUser("user1", "password1");
-    loginUser("user1", "password2");
-    loginUser("user2", "password1");
+ char username[MAX_USERNAME_LENGTH];
+    char password[MAX_PASSWORD_LENGTH];
 
-    awardMiles(60);
-    awardMiles(30);
-    awardMiles(90);
+    printf("Welcome!\n");
 
-    printTransactionHistory();
+    int loggedIn = 0;
+    while (!loggedIn) {
+        int choice;
+        printf("1. Register\n");
+        printf("2. Login\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-    return 0;
+        switch (choice) {
+            case 1:
+                printf("Enter username: ");
+                scanf("%s", username);
+                printf("Enter password: ");
+                scanf("%s", password);
+                registerUser(username, password);
+                break;
+            case 2:
+                printf("Enter username: ");
+                scanf("%s", username);
+                printf("Enter password: ");
+                scanf("%s", password);
+                loggedIn = loginUser(username, password);
+                break;
+            case 3:
+                printf("Goodbye!\n");
+                return 0;
+            default:
+                printf("Invalid choice. Please try again.\n");
+                break;
+        }
+    }
+
+  int choice;
+    int codingLevel;
+    char description[100];
+
+    while (1) {
+        printf("\n**마일리지 타임(아너코드!)**:\n");
+        printf("1. Award Miles\n");
+        printf("2. Print Transaction History\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter coding level: ");
+                scanf("%d", &codingLevel);
+                awardMiles(codingLevel);
+                break;
+            case 2:
+                printTransactionHistory();
+                break;
+            case 3:
+                printf("Exiting program.\n");
+                return 0;
+            default:
+                printf("Invalid choice. Please try again.\n");
+                break;
+        }
+    }
+return 0;
 }
