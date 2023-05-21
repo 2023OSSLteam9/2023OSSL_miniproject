@@ -51,28 +51,28 @@ int main(){
     int loggedIn = 0;
     while (!loggedIn) {
         int choice;
-        printf("1. Register\n");
-        printf("2. Login\n");
-        printf("3. Exit\n");
+        printf("6. Register\n");
+        printf("7. Login\n");
+        printf("8. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
         switch (choice) {
-            case 1:
+            case 6:
                 printf("Enter username: ");
                 scanf("%s", username);
                 printf("Enter password: ");
                 scanf("%s", password);
                 registerUser(username, password);
                 break;
-            case 2:
+            case 7:
                 printf("Enter username: ");
                 scanf("%s", username);
                 printf("Enter password: ");
                 scanf("%s", password);
                 loggedIn = loginUser(username, password);
                 break;
-            case 3:
+            case 8:
                 printf("Goodbye!\n");
                 return 0;
             default:
@@ -81,28 +81,28 @@ int main(){
         }
     }
 
-  int choice;
+    int choice;
     int codingLevel;
     char description[100];
 
     while (1) {
         printf("\n**마일리지 타임(아너코드!)**:\n");
-        printf("1. Award Miles\n");
-        printf("2. Print Transaction History\n");
-        printf("3. Exit\n");
+        printf("9. Award Miles\n");
+        printf("10. Print Transaction History\n");
+        printf("11. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
         switch (choice) {
-            case 1:
+            case 9:
                 printf("Enter coding level: ");
                 scanf("%d", &codingLevel);
                 awardMiles(codingLevel);
                 break;
-            case 2:
+            case 10:
                 printTransactionHistory();
                 break;
-            case 3:
+            case 11:
                 printf("Exiting program.\n");
                 return 0;
             default:
