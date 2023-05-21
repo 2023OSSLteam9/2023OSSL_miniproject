@@ -49,6 +49,11 @@ int main(){
     loginUser("user1", "password2");
     loginUser("user2", "password1");
 
+    awardMiles(60);
+    awardMiles(30);
+    awardMiles(90);
+
+    printTransactionHistory();
 
     return 0;
 }
