@@ -7,18 +7,11 @@
 -> 어떤 함수를 구현할지 결정!!
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include "addfunc.h"
+#ifndef ADDFUNC_H
+#define ADDFUNC_H
 
-int main() {
-    registerUser("user1", "password1"); // 회원가입
-    registerUser("user2", "password2");
+int registerUser(const char *username, const char *password);
+int loginUser(const char *username, const char *password);
 
-    loginUser("user1", "password1"); //로그인 
-    loginUser("user1", "password2");
-    loginUser("user2", "password1");
+#endif /* ADDFUNC_H */
 
-    return 0;
-}
