@@ -9,6 +9,15 @@
 #ifndef ADDFUNC_H
 #define ADDFUNC_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_USERS 10
+#define MAX_USERNAME_LENGTH 20
+#define MAX_PASSWORD_LENGTH 20
+#define MAX_TRANSACTIONS 100
+
 int registerUser(const char *username, const char *password); // 회원가입
 int loginUser(const char *username, const char *password); // 로그인
 

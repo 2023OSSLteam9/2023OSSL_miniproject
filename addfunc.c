@@ -1,12 +1,4 @@
 #include "addfunc.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#define MAX_USERS 10
-#define MAX_USERNAME_LENGTH 20
-#define MAX_PASSWORD_LENGTH 20
-#define MAX_TRANSACTIONS 100
 
 struct User {
     char username[MAX_USERNAME_LENGTH];
@@ -95,6 +87,9 @@ void printTransactionHistory() {
         printf("Description: %s, Miles: %d\n", transactions[i].description, transactions[i].miles);
     }
     printf("Total Miles: %d\n", totalMiles);
+    printf("\nPress enter to continue...");
+    while(getchar() != '\n');        // 엔터를 누르기 전까지 메뉴로 돌아가지 않음
+    getchar();                       // 입력 버퍼 제거
 }
 
 // 입력된 코딩 레벨에 따른 마일리지 지급
@@ -117,4 +112,7 @@ void awardMiles(int codingLevel) {
     char description[100];
     sprintf(description, "Coding Level +%d", codingLevel);
     addTransaction(description, miles);
+    printf("\nPress Enter to continue...");
+    while(getchar() != '\n');        // 엔터를 누르기 전까지 메뉴로 돌아가지 않음
+    getchar();                       // 입력 버퍼 제거
 }
