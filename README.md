@@ -1,5 +1,5 @@
 # 2023OSSL_miniproject
-[image](https://github.com/2023OSSLteam9/2023OSSL_miniproject/assets/130054828/c62e69ad-c3af-409f-9022-97c4d185b931)
+[](https://github.com/2023OSSLteam9/2023OSSL_miniproject/assets/130054828/c62e69ad-c3af-409f-9022-97c4d185b931)
 ---
 
 ## 아너코드, 함께 코딩공부하고 마일리지 쌓는 개발자들의 커뮤니티
