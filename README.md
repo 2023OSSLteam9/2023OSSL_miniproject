@@ -1,4 +1,7 @@
 # 2023OSSL_miniproject
+
+![image](https://github.com/2023OSSLteam9/2023OSSL_miniproject/assets/130054828/c3452912-3b9c-40e6-abae-2b56eb1d2933)
+
 ---
 
 ## 아너Code, 함께 코딩공부하고 마일리지 쌓는 개발자들의 커뮤니티
