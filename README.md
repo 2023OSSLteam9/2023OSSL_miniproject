@@ -1,4 +1,4 @@
-# 2023OSSL_miniproject
+# 2023OSSL_miniproject : "아너Code"
 
 ![image](https://github.com/2023OSSLteam9/2023OSSL_miniproject/assets/130054828/c3452912-3b9c-40e6-abae-2b56eb1d2933)
 
